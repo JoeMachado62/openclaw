@@ -1,0 +1,40 @@
+{
+  "id": "gohighlevel",
+  "name": "GoHighLevel CRM",
+  "description": "GoHighLevel CRM integration with OAuth, contacts, conversations, and webhooks",
+  "version": "1.0.0",
+  "kind": "integration",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "clientId": {
+        "type": "string",
+        "description": "GHL OAuth Client ID",
+        "ui:secret": true
+      },
+      "clientSecret": {
+        "type": "string",
+        "description": "GHL OAuth Client Secret",
+        "ui:secret": true
+      },
+      "redirectUri": {
+        "type": "string",
+        "description": "OAuth redirect URI"
+      },
+      "webhookSecret": {
+        "type": "string",
+        "description": "Webhook signature verification secret",
+        "ui:secret": true
+      },
+      "pitToken": {
+        "type": "string",
+        "description": "Private Integration Token (alternative to OAuth)",
+        "ui:secret": true
+      },
+      "locationId": {
+        "type": "string",
+        "description": "Default GHL Location ID"
+      }
+    }
+  }
+}

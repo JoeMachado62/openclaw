@@ -1,0 +1,53 @@
+{
+  "id": "aime-voice",
+  "name": "AIME Voice Agent",
+  "description": "LiveKit voice agent with GoHighLevel CRM synchronization",
+  "version": "1.0.0",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "livekit": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "LiveKit server URL (wss://...)"
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "LiveKit API key",
+            "ui:secret": true
+          },
+          "apiSecret": {
+            "type": "string",
+            "description": "LiveKit API secret",
+            "ui:secret": true
+          },
+          "sipUri": {
+            "type": "string",
+            "description": "SIP URI for phone calls"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "description": "Voice agent phone number"
+          }
+        }
+      },
+      "autoProcessCalls": {
+        "type": "boolean",
+        "description": "Automatically process call transcripts",
+        "default": true
+      },
+      "createTasksFromCalls": {
+        "type": "boolean",
+        "description": "Auto-create GHL tasks from call summaries",
+        "default": true
+      },
+      "syncToMemory": {
+        "type": "boolean",
+        "description": "Sync calls to contact memory",
+        "default": true
+      }
+    }
+  }
+}

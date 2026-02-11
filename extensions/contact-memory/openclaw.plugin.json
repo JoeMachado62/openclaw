@@ -1,0 +1,29 @@
+{
+  "id": "contact-memory",
+  "name": "Contact Memory System",
+  "description": "Unified contact memory with fact extraction and retrieval",
+  "version": "1.0.0",
+  "kind": "memory",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "dbPath": {
+        "type": "string",
+        "description": "Path to SQLite database file for contact memory"
+      },
+      "autoIndex": {
+        "type": "boolean",
+        "description": "Automatically index messages (default: true)",
+        "default": true
+      },
+      "channels": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Channels to auto-index (default: telegram, aime-voice, whatsapp)",
+        "default": ["telegram", "aime-voice", "whatsapp"]
+      }
+    }
+  }
+}

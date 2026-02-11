@@ -118,8 +118,32 @@
 - Development guidelines
 - Best practices for voice agents
 - Cost optimization strategies
+- **GoHighLevel SDK reference** (Node.js + Python)
 
-### 10. [src/plugins/ghl/README.md](src/plugins/ghl/README.md)
+### 10. [GHL_CREDENTIALS_SETUP.md](GHL_CREDENTIALS_SETUP.md) ⭐ **GET CREDENTIALS**
+**Time**: 15 minutes
+**When**: Setting up GoHighLevel integration
+**What**: Step-by-step credential acquisition guide
+- How to get CLIENT_SECRET
+- How to get WEBHOOK_SECRET
+- How to get PRIVATE_INTEGRATION_TOKEN
+- How to get LOCATION_ID
+- OAuth flow setup
+- Credential verification
+- Troubleshooting
+
+### 10a. [GHL_AGENCY_FUTURE_CONSIDERATIONS.md](GHL_AGENCY_FUTURE_CONSIDERATIONS.md) **FUTURE PLANNING**
+**Time**: 15 minutes (skim)
+**When**: Planning for multi-location or agency operations
+**What**: Future enhancements and scaling considerations
+- Agency-level AI operations
+- Multi-location credential management
+- Database-backed credential stores
+- Phone number routing systems
+- Marketplace app architecture
+- Migration path from single to multi-location
+
+### 11. [src/plugins/ghl/README.md](src/plugins/ghl/README.md)
 **Time**: 10 minutes
 **When**: Working with GHL integration
 **What**: GHL plugin documentation
@@ -254,7 +278,9 @@
 - [QUICK_START_LIVEKIT.md](QUICK_START_LIVEKIT.md) - Common Issues
 
 **GHL Integration**:
-- [src/plugins/ghl/README.md](src/plugins/ghl/README.md)
+- [GHL_CREDENTIALS_SETUP.md](GHL_CREDENTIALS_SETUP.md) - Get your API credentials
+- [src/plugins/ghl/README.md](src/plugins/ghl/README.md) - Plugin documentation
+- [AIME_AGENTS.md](AIME_AGENTS.md) - GoHighLevel SDK Reference (Node.js + Python)
 - [MORNING_CHECKLIST.md](MORNING_CHECKLIST.md) - Step 1
 
 **Cost Optimization**:

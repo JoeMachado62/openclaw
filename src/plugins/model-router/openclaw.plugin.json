@@ -1,0 +1,59 @@
+{
+  "id": "model-router",
+  "name": "T0-T3 Model Router",
+  "description": "Cost-optimized intelligent model routing with automatic tier escalation",
+  "version": "1.0.0",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "tiers": {
+        "type": "object",
+        "description": "Model tier configuration",
+        "properties": {
+          "t0": {
+            "type": "object",
+            "properties": {
+              "provider": { "type": "string", "default": "ollama" },
+              "model": { "type": "string", "default": "llama3.1:8b" },
+              "costPer1M": { "type": "number", "default": 0 }
+            }
+          },
+          "t1": {
+            "type": "object",
+            "properties": {
+              "provider": { "type": "string", "default": "anthropic" },
+              "model": { "type": "string", "default": "claude-haiku-4-5" },
+              "costPer1M": { "type": "number", "default": 0.25 }
+            }
+          },
+          "t2": {
+            "type": "object",
+            "properties": {
+              "provider": { "type": "string", "default": "anthropic" },
+              "model": { "type": "string", "default": "claude-sonnet-4-5" },
+              "costPer1M": { "type": "number", "default": 3.0 }
+            }
+          },
+          "t3": {
+            "type": "object",
+            "properties": {
+              "provider": { "type": "string", "default": "anthropic" },
+              "model": { "type": "string", "default": "claude-opus-4-6" },
+              "costPer1M": { "type": "number", "default": 15.0 }
+            }
+          }
+        }
+      },
+      "autoEscalate": {
+        "type": "boolean",
+        "description": "Automatically escalate to higher tier on failures",
+        "default": true
+      },
+      "trackCosts": {
+        "type": "boolean",
+        "description": "Track cost statistics",
+        "default": true
+      }
+    }
+  }
+}

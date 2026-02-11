@@ -1,0 +1,10 @@
+[35m[plugins][39m [31maime-voice failed to load from C:\Users\buyaf\OneDrive\Documents\EZWAI_AIME\EZWAi_Aime\extensions\aime-voice\index.ts: Error: Cannot find module '@anthropic-ai/sdk'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\buyaf\OneDrive\Documents\EZWAI_AIME\EZWAi_Aime\extensions\aime-voice\ai-call-initiator.ts[39m
+[35m[plugins][39m [36mInitializing Contact Memory plugin...[39m
+[35m[plugins][39m [31mcontact-memory failed during register from C:\Users\buyaf\OneDrive\Documents\EZWAI_AIME\EZWAi_Aime\extensions\contact-memory\index.ts: TypeError: Cannot read properties of undefined (reading 'trim')[39m
+[35m[plugins][39m [36mRegistering GoHighLevel plugin...[39m
+[35m[plugins][39m [36mGoHighLevel tools registered - 27 tools available[39m
+[35m[plugins][39m [36mInitializing Model Router plugin...[39m
+[35m[plugins][39m [36mModel Router plugin registered[39m
+2026-02-11T16:00:36.411Z Gateway start blocked: set gateway.mode=local (current: unset) or pass --allow-unconfigured.

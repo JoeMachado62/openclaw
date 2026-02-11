@@ -257,23 +257,77 @@ export function createGHLPlugin(config: GHLConfig, options?: { redisUrl?: string
 
 /**
  * Load GHL configuration from environment variables
+ * Supports two modes:
+ * 1. Private Integration: Only requires GHL_PIT_TOKEN + GHL_LOCATION_ID
+ * 2. OAuth App: Requires GHL_CLIENT_ID + GHL_CLIENT_SECRET + GHL_REDIRECT_URI
  */
 export function loadGHLConfigFromEnv(): GHLConfig {
   const clientId = process.env.GHL_CLIENT_ID;
   const clientSecret = process.env.GHL_CLIENT_SECRET;
   const redirectUri = process.env.GHL_REDIRECT_URI;
+  const pitToken = process.env.GHL_PIT_TOKEN;
+  const locationId = process.env.GHL_LOCATION_ID;
 
+  // Check if using Private Integration Token mode
+  if (pitToken) {
+    console.log('[GHL Plugin] Using Private Integration Token mode');
+    // OAuth credentials are optional when using PIT
+    return {
+      clientId: clientId || 'not_required_for_pit',
+      clientSecret: clientSecret || 'not_required_for_pit',
+      redirectUri: redirectUri || 'not_required_for_pit',
+      webhookSecret: process.env.GHL_WEBHOOK_SECRET,
+      pitToken,
+      locationId,
+    };
+  }
+
+  // OAuth mode - require all OAuth credentials
   if (!clientId || !clientSecret || !redirectUri) {
     throw new Error(
-      'Missing required GHL configuration. Please set GHL_CLIENT_ID, GHL_CLIENT_SECRET, and GHL_REDIRECT_URI environment variables.'
+      'Missing required GHL configuration. For OAuth apps, set GHL_CLIENT_ID, GHL_CLIENT_SECRET, and GHL_REDIRECT_URI. For private integrations, set GHL_PIT_TOKEN.'
     );
   }
 
+  console.log('[GHL Plugin] Using OAuth mode');
   return {
     clientId,
     clientSecret,
     redirectUri,
     webhookSecret: process.env.GHL_WEBHOOK_SECRET,
-    pitToken: process.env.GHL_PIT_TOKEN,
+    pitToken,
+    locationId,
   };
 }
+
+/**
+ * OpenClaw Plugin Definition
+ * This integrates GHL with OpenClaw's plugin system
+ */
+import type { OpenClawPluginApi, OpenClawPluginDefinition } from '../types.js';
+import { createGHLTool } from './tool.js';
+
+const ghlPlugin: OpenClawPluginDefinition = {
+  id: 'gohighlevel',
+  name: 'GoHighLevel CRM',
+  description: 'GoHighLevel CRM integration with OAuth, contacts, conversations, and webhooks',
+  version: '1.0.0',
+  kind: 'integration',
+
+  register(api: OpenClawPluginApi) {
+    api.logger.info('Registering GoHighLevel plugin...');
+
+    // Register agent tools
+    api.registerTool(createGHLTool, {
+      names: ['ghl_get_contact', 'ghl_search_contacts', 'ghl_create_task', 'ghl_send_message']
+    });
+
+    api.logger.info('GoHighLevel tools registered');
+  },
+
+  activate(api: OpenClawPluginApi) {
+    api.logger.info('GoHighLevel plugin activated successfully');
+  }
+};
+
+export default ghlPlugin;

@@ -2,6 +2,18 @@
   "$schema": "https://raw.githubusercontent.com/openclaw/openclaw/main/schema.json",
   "version": "2026.2.9",
 
+  "identity": {
+    "name": "AIME",
+    "theme": "professional sales and support AI assistant for GoHighLevel CRM",
+    "emoji": "🤖"
+  },
+
+  "messages": {
+    "messagePrefix": "[AIME]",
+    "responsePrefix": "> ",
+    "ackReaction": "👀"
+  },
+
   "mcpServers": {
     "livekit-docs": {
       "transport": "http",
@@ -17,6 +29,21 @@
       "name": "AIME Voice Agent",
       "description": "LiveKit-powered voice agent for GoHighLevel CRM",
       "enabled": true
+    },
+    {
+      "id": "telegram",
+      "type": "telegram",
+      "name": "Telegram Bot",
+      "description": "Telegram messaging integration",
+      "enabled": true,
+      "botToken": "${TELEGRAM_BOT_TOKEN}",
+      "dmPolicy": "pairing",
+      "streamMode": "partial",
+      "groups": {
+        "*": {
+          "requireMention": true
+        }
+      }
     }
   ],
 
@@ -86,7 +113,8 @@
     "GHL_CLIENT_SECRET": "${GHL_CLIENT_SECRET}",
     "GHL_PIT_TOKEN": "${GHL_PIT_TOKEN}",
     "OPENCLAW_BASE_URL": "http://localhost:3000",
-    "DEEPGRAM_API_KEY": "${DEEPGRAM_API_KEY}"
+    "DEEPGRAM_API_KEY": "${DEEPGRAM_API_KEY}",
+    "TELEGRAM_BOT_TOKEN": "${TELEGRAM_BOT_TOKEN}"
   },
 
   "plugins": {

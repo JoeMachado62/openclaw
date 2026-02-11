@@ -133,6 +133,137 @@ const response = await fetch(`https://api.gohighlevel.com/...`);
 
 ---
 
+## GoHighLevel SDK Reference
+
+This project includes both **Node.js** and **Python** GoHighLevel SDKs for CRM integration.
+
+### Node.js SDK (`@gohighlevel/api-client`)
+
+**Installed**: ✅ Added to `package.json`
+**Version**: ^2.0.0
+**Requires**: Node.js v18+
+
+**Installation**:
+```bash
+pnpm install @gohighlevel/api-client
+```
+
+**Key Features**:
+- ✅ **Automatic OAuth token handling** (refresh, rotation)
+- ✅ **Type-safe API methods** for all HighLevel endpoints
+- ✅ **Webhook middleware** for Express (signature validation, INSTALL/UNINSTALL events)
+- ✅ **Storage adapters** (Redis, MongoDB, SQL) for production token persistence
+
+**Usage Example**:
+```typescript
+import { Client } from '@gohighlevel/api-client';
+
+// Initialize client with OAuth credentials
+const client = new Client({
+  clientId: process.env.GHL_CLIENT_ID,
+  clientSecret: process.env.GHL_CLIENT_SECRET,
+  accessToken: process.env.GHL_ACCESS_TOKEN
+});
+
+// Get contact information
+const contact = await client.contacts.get({
+  locationId: 'loc_xxx',
+  contactId: 'contact_xxx'
+});
+
+// Create a task
+const task = await client.tasks.create({
+  locationId: 'loc_xxx',
+  title: 'Follow up call',
+  dueDate: '2026-02-15',
+  assignedTo: 'user_xxx'
+});
+```
+
+**Documentation**: https://marketplace.gohighlevel.com/docs/sdk/node/
+
+---
+
+### Python SDK (`gohighlevel-api-client`)
+
+**Installed**: ✅ Added to `agents/requirements.txt`
+**Version**: >=1.0.0
+**Requires**: Python 3.8+
+
+**Installation**:
+```bash
+cd agents
+pip install -r requirements.txt
+```
+
+**Key Features**:
+- ✅ **Async-first architecture** (built on `asyncio`)
+- ✅ **Session storage** (in-memory for dev, Redis/MongoDB for production)
+- ✅ **Webhook helpers** (signature validation, event handling)
+- ✅ **Full API coverage** (contacts, campaigns, invoices, workflows, etc.)
+
+**Usage Example**:
+```python
+import asyncio
+from gohighlevel import Client
+
+async def main():
+    # Initialize async client
+    client = Client(
+        client_id=os.getenv('GHL_CLIENT_ID'),
+        client_secret=os.getenv('GHL_CLIENT_SECRET'),
+        access_token=os.getenv('GHL_ACCESS_TOKEN')
+    )
+
+    # Get contact information
+    contact = await client.contacts.get(
+        location_id='loc_xxx',
+        contact_id='contact_xxx'
+    )
+
+    # Create opportunity
+    opportunity = await client.opportunities.create(
+        location_id='loc_xxx',
+        name='New Lead from Voice Call',
+        contact_id='contact_xxx',
+        status='open'
+    )
+
+    await client.close()
+
+# Run async code
+asyncio.run(main())
+```
+
+**Documentation**: https://marketplace.gohighlevel.com/docs/sdk/python/
+
+---
+
+### When to Use Which SDK
+
+| Context | SDK to Use | Reason |
+|---------|-----------|--------|
+| **OpenClaw plugins** (Node.js) | `@gohighlevel/api-client` | TypeScript/Node.js environment |
+| **Voice agents** (Python) | `gohighlevel-api-client` | Python/LiveKit environment |
+| **Webhook handlers** (Node.js) | `@gohighlevel/api-client` | Express middleware included |
+| **Batch processing** (Python) | `gohighlevel-api-client` | Async batch operations |
+
+### Environment Variables Required
+
+Add to `.env`:
+```bash
+# GoHighLevel OAuth Credentials
+GHL_CLIENT_ID=your_client_id_here
+GHL_CLIENT_SECRET=your_client_secret_here
+GHL_ACCESS_TOKEN=your_access_token_here
+GHL_REFRESH_TOKEN=your_refresh_token_here
+GHL_LOCATION_ID=your_location_id_here
+```
+
+Get credentials from: https://marketplace.gohighlevel.com/
+
+---
+
 ## Resources
 
 ### Documentation

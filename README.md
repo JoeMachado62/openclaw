@@ -1,14 +1,9 @@
-# 🦞 OpenClaw — Personal AI Assistant
+# 🤖 EZWAi AIME — AI Voice Agent Platform
+
+**Powered by OpenClaw & GoHighLevel**
 
 <p align="center">
-    <picture>
-        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-logo-text-dark.png">
-        <img src="https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-logo-text.png" alt="OpenClaw" width="500">
-    </picture>
-</p>
-
-<p align="center">
-  <strong>EXFOLIATE! EXFOLIATE!</strong>
+  <strong>Professional Sales & Support AI Assistant for GoHighLevel CRM</strong>
 </p>
 
 <p align="center">
@@ -18,10 +13,16 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License"></a>
 </p>
 
-**OpenClaw** is a _personal AI assistant_ you run on your own devices.
-It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, Microsoft Teams, WebChat), plus extension channels like BlueBubbles, Matrix, Zalo, and Zalo Personal. It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.
+**EZWAi AIME** is an enterprise AI voice agent platform built specifically for GoHighLevel CRM users. Built on OpenClaw's powerful multi-channel framework with LiveKit voice capabilities, AIME provides:
 
-If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
+- 🎙️ **AI Voice Calls** — Natural conversations via LiveKit SIP trunking
+- 📞 **GoHighLevel Integration** — Seamless CRM synchronization with contacts, conversations, and tasks
+- 🧠 **Contact Memory** — Unified interaction history with automatic fact extraction
+- 💰 **Cost Optimization** — T0-T3 model routing (Ollama → Haiku → Sonnet → Opus)
+- 📱 **Multi-Channel** — Telegram, WhatsApp, voice calls, SMS
+- 🔒 **Enterprise OAuth** — Secure GoHighLevel marketplace app integration
+
+Built for agencies and businesses that want intelligent voice automation integrated directly with their GoHighLevel workflows.
 
 [Website](https://openclaw.ai) · [Docs](https://docs.openclaw.ai) · [DeepWiki](https://deepwiki.com/openclaw/openclaw) · [Getting Started](https://docs.openclaw.ai/start/getting-started) · [Updating](https://docs.openclaw.ai/install/updating) · [Showcase](https://docs.openclaw.ai/start/showcase) · [FAQ](https://docs.openclaw.ai/start/faq) · [Wizard](https://docs.openclaw.ai/start/wizard) · [Nix](https://github.com/openclaw/nix-openclaw) · [Docker](https://docs.openclaw.ai/install/docker) · [Discord](https://discord.gg/clawd)
 
